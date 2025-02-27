@@ -12,7 +12,7 @@ import { Textarea } from "../ui/textarea";
 interface IFormInputProps {
   label?: string;
   name: string;
-  type?: "textarea" | "textinput" | null;
+  typeInput?: "textarea" | "textinput" | null;
   iconR?: { name: string; size: number; color: string };
   iconL?: { name: string; size: number; color: string };
 }
@@ -20,7 +20,7 @@ interface IFormInputProps {
 export const FormInput = ({
   label,
   name,
-  type = "textinput",
+  typeInput = "textinput",
   ...props
 }: IFormInputProps &
   InputHTMLAttributes<HTMLInputElement> &
@@ -31,7 +31,7 @@ export const FormInput = ({
       name={name}
       render={({ field }) => {
         const renderBody = () => {
-          if (type === "textarea") {
+          if (typeInput === "textarea") {
             return <Textarea {...props} {...field} />;
           }
           return <Input {...props} {...field} />;
