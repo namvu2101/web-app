@@ -1,4 +1,4 @@
-import ProductView from "@/components/product-view"
+import { ProductView } from "@/components/product-view"
 
 // This would typically come from a database or API
 const product = {
