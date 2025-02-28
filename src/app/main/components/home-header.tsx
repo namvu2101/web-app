@@ -47,7 +47,7 @@ export function Header() {
           >
             <ShoppingCart className="h-5 w-5" />
             Giỏ hàng
-            {cart.length > 0 && (
+            {cart?.length > 0 && (
               <div className="top-0 right-0 flex items-center justify-center w-4 h-4 bg-red-500 text-white text-xs rounded-full">
                 <span className="text-2">{cart.length}</span>
               </div>

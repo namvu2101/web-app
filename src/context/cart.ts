@@ -1,70 +1,84 @@
 import { useEffect, useState } from "react";
 import { Product } from "@/app/data";
 
-// Định nghĩa kiểu dữ liệu mới cho giỏ hàng
 export type TAddCart = Product & { quantity: number };
 export type TCart = Record<string, TAddCart>;
 
 const CART_STORAGE_KEY = "cart";
-let cart: TCart = {};
 
-// Hàm lưu giỏ hàng vào localStorage
-const saveCartToLocalStorage = (cart: TCart) => {
-  listeners.forEach((listener) => listener({ ...cart }));
-  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+// Function to get cart from localStorage
+const getCartFromLocalStorage = (): TCart => {
+  if (typeof window !== "undefined") {
+    const storedCart = localStorage.getItem(CART_STORAGE_KEY);
+    return storedCart ? JSON.parse(storedCart) : {};
+  }
+  return {};
 };
+
+// Initialize cart with data from localStorage
+let cart: TCart = getCartFromLocalStorage();
 
 const listeners = new Set<(cart: TCart) => void>();
 
-// Thêm sản phẩm vào giỏ hàng
+// Function to save cart to localStorage and notify listeners
+const saveCartToLocalStorage = (updatedCart: TCart) => {
+  cart = { ...updatedCart };
+  if (typeof window !== "undefined") {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  }
+  listeners.forEach((listener) => listener({ ...cart }));
+};
+
 export const addProductIntoCart = (product: Product) => {
-  if (cart[product.id]) {
-    cart[product.id].quantity += 1;
+  const updatedCart = { ...cart };
+  if (updatedCart[product.id]) {
+    updatedCart[product.id].quantity += 1;
   } else {
-    cart[product.id] = { ...product, quantity: 1 };
+    updatedCart[product.id] = { ...product, quantity: 1 };
   }
-  saveCartToLocalStorage(cart);
+  saveCartToLocalStorage(updatedCart);
 };
 
-// Xóa sản phẩm khỏi giỏ hàng
 export const removeProductFromCart = (productId: string) => {
-  if (cart[productId]) {
-    delete cart[productId];
-    saveCartToLocalStorage(cart);
+  const updatedCart = { ...cart };
+  if (updatedCart[productId]) {
+    delete updatedCart[productId];
+    saveCartToLocalStorage(updatedCart);
   }
 };
 
-// Giảm số lượng sản phẩm
 export const decreaseProductQuantity = (productId: string) => {
-  if (cart[productId]) {
-    cart[productId].quantity -= 1;
-    saveCartToLocalStorage(cart);
+  const updatedCart = { ...cart };
+  if (updatedCart[productId] && updatedCart[productId].quantity > 1) {
+    updatedCart[productId].quantity -= 1;
+    saveCartToLocalStorage(updatedCart);
+  } else if (updatedCart[productId] && updatedCart[productId].quantity === 1) {
+    removeProductFromCart(productId);
   }
 };
 
-// Tăng số lượng sản phẩm
 export const increaseProductQuantity = (productId: string) => {
-  if (cart[productId]) {
-    cart[productId].quantity += 1;
-    saveCartToLocalStorage(cart);
+  const updatedCart = { ...cart };
+  if (updatedCart[productId]) {
+    updatedCart[productId].quantity += 1;
+    saveCartToLocalStorage(updatedCart);
   }
 };
 
-// Hook lấy dữ liệu giỏ hàng
 export const useGetCart = () => {
-  const [state, setState] = useState<TCart>({});
-  useEffect(() => {
-    if (localStorage.getItem(CART_STORAGE_KEY)) {
-      const storedCart = JSON.parse(
-        localStorage.getItem(CART_STORAGE_KEY) ?? "{}"
-      );
+  const [state, setState] = useState<TCart>(getCartFromLocalStorage());
 
-      setState(storedCart);
-    }
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setState(getCartFromLocalStorage());
+    };
 
     listeners.add(setState);
+    window.addEventListener("storage", handleStorageChange);
+
     return () => {
       listeners.delete(setState);
+      window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
 
