@@ -38,7 +38,7 @@ export const FormInput = ({
         };
         return (
           <FormItem>
-            <FormLabel>{label}</FormLabel>
+            {label && <FormLabel>{label}</FormLabel>}
             <FormControl>{renderBody()}</FormControl>
             <FormMessage />
           </FormItem>

@@ -1,4 +1,5 @@
-import { ProductView } from "@/components/product-view"
+"use-client";
+import { ProductView } from "@/components/product-view";
 
 // This would typically come from a database or API
 const product = {
@@ -28,16 +29,14 @@ const product = {
     "/placeholder.svg?height=800&width=800",
     "/placeholder.svg?height=800&width=800",
   ],
-}
+};
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+export default function ProductPage() {
   // In a real application, you would fetch the product data based on the ID
-  // const { id } = params;
 
   return (
     <div>
-      <ProductView product={product} />
+      <ProductView />
     </div>
-  )
+  );
 }
-

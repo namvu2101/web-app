@@ -1,21 +1,25 @@
 "use client";
-import { FormProvider, useForm } from "react-hook-form";
-import { Products } from "./components/products-list";
-import { SidebarNav } from "./components/products-side";
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { AppSidebar } from "./components/app-sidebar";
 import { ProductsHeader } from "./components/products-header";
+import { FormProvider, useForm } from "react-hook-form";
+import { ProductGrid } from "./components/products-list";
 
 export default function ProductsPage() {
-  const methods = useForm({ defaultValues: { categorySelected: '1' } });
-
+  const methods = useForm({
+    defaultValues: { category: "0", subCategory: "0", search: "" },
+  });
   return (
-    <div className="flex h-screen">
+    <SidebarProvider>
       <FormProvider {...methods}>
-        <SidebarNav />
-        <div className="container mx-auto px-4 ">
-          <ProductsHeader />
-        </div>
+        <AppSidebar />
+        <SidebarInset>
+          <div className="p-10">
+            <ProductsHeader />
+            <ProductGrid />
+          </div>
+        </SidebarInset>
       </FormProvider>
-    </div>
+    </SidebarProvider>
   );
 }
-

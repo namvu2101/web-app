@@ -1,38 +1,29 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Minus, Plus, ShoppingCart } from "lucide-react"
+import { useState } from "react";
+import { Minus, Plus, ShoppingCart } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Separator } from "@/components/ui/separator";
+import { useParams } from "next/navigation";
+import { products } from "@/app/data";
+import { Convert } from "@/lib/utils";
 
-interface ProductViewProps {
-  product: {
-    id: number
-    name: string
-    price: number
-    description: string
-    features: string[]
-    care: string[]
-    images: string[]
-  }
-}
-
-export function ProductView({ product }: ProductViewProps) {
-  const [quantity, setQuantity] = useState(1)
-  const [selectedImage, setSelectedImage] = useState(0)
-
+export function ProductView() {
+  const [quantity, setQuantity] = useState(1);
+  const { id } = useParams();
+  const product = products.find((p) => p.id === id);
   const decreaseQuantity = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1)
+      setQuantity(quantity - 1);
     }
-  }
+  };
 
   const increaseQuantity = () => {
-    setQuantity(quantity + 1)
-  }
+    setQuantity(quantity + 1);
+  };
 
   return (
     <div className="container py-12">
@@ -40,16 +31,20 @@ export function ProductView({ product }: ProductViewProps) {
         <div className="space-y-4">
           <div className="aspect-square overflow-hidden rounded-lg">
             <img
-              src={product.images[selectedImage] || "/placeholder.svg?height=800&width=800"}
-              alt={product.name}
+              src={product?.image ?? "/placeholder.svg?height=800&width=800"}
+              alt={product?.name}
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="grid grid-cols-4 gap-4">
+          {/* <div className="grid grid-cols-4 gap-4">
             {product.images.map((image, index) => (
               <div
                 key={index}
-                className={`aspect-square rounded-md overflow-hidden cursor-pointer border-2 ${selectedImage === index ? "border-primary" : "border-transparent"}`}
+                className={`aspect-square rounded-md overflow-hidden cursor-pointer border-2 ${
+                  selectedImage === index
+                    ? "border-primary"
+                    : "border-transparent"
+                }`}
                 onClick={() => setSelectedImage(index)}
               >
                 <img
@@ -59,13 +54,15 @@ export function ProductView({ product }: ProductViewProps) {
                 />
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
 
         <div className="space-y-6">
           <div>
-            <h1 className="text-3xl font-serif">{product.name}</h1>
-            <p className="text-2xl font-medium mt-2">${product.price.toFixed(2)}</p>
+            <h1 className="text-3xl font-serif">{product?.name}</h1>
+            <p className="text-2xl font-medium mt-2">
+              {Convert.numberWithCommas(product?.price ?? 0)} vnd
+            </p>
           </div>
 
           <Separator />
@@ -111,7 +108,9 @@ export function ProductView({ product }: ProductViewProps) {
             <TabsContent value="details" className="pt-4">
               <Card>
                 <CardContent className="pt-6">
-                  <p className="text-sm text-muted-foreground">{product.description}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {product.description}
+                  </p>
                   <p className="text-sm text-muted-foreground mt-4">
                     Dimensions: 4.5" x 3.2" x 8.7"
                     <br />
@@ -128,9 +127,9 @@ export function ProductView({ product }: ProductViewProps) {
               <Card>
                 <CardContent className="pt-6">
                   <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                    {product.features.map((feature, index) => (
+                    {/* {product.features.map((feature, index) => (
                       <li key={index}>{feature}</li>
-                    ))}
+                    ))} */}
                   </ul>
                 </CardContent>
               </Card>
@@ -139,9 +138,9 @@ export function ProductView({ product }: ProductViewProps) {
               <Card>
                 <CardContent className="pt-6">
                   <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                    {product.care.map((item, index) => (
+                    {/* {product.care.map((item, index) => (
                       <li key={index}>{item}</li>
-                    ))}
+                    ))} */}
                   </ul>
                 </CardContent>
               </Card>
@@ -150,8 +149,7 @@ export function ProductView({ product }: ProductViewProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default ProductView
-
+export default ProductView;
