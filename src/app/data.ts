@@ -5,20 +5,20 @@ const featuredCollections = [
     id: 1,
     name: "Marble Collection",
     description: "Timeless elegance crafted from premium Italian marble",
-    image: "/placeholder.svg?height=600&width=800",
+    images: "/placeholder.svg?height=600&width=800",
   },
   {
     id: 2,
     name: "Brass Essentials",
     description: "Hand-polished brass accessories with a modern twist",
-    image: "/placeholder.svg?height=600&width=800",
+    images: "/placeholder.svg?height=600&width=800",
   },
   {
     id: 3,
     name: "Scandinavian Minimalism",
     description:
       "Clean lines and functional design for the contemporary bathroom",
-    image: "/placeholder.svg?height=600&width=800",
+    images: "/placeholder.svg?height=600&width=800",
   },
 ];
 
@@ -29,7 +29,7 @@ const bestsellingProducts = [
     price: 89.99,
     rating: 5,
     reviewCount: 124,
-    image: "/placeholder.svg?height=500&width=500",
+    images: "/placeholder.svg?height=500&width=500",
     description:
       "A luxurious soap dispenser crafted from premium Italian marble.",
   },
@@ -39,7 +39,7 @@ const bestsellingProducts = [
     price: 129.99,
     rating: 4,
     reviewCount: 86,
-    image: "/placeholder.svg?height=500&width=500",
+    images: "/placeholder.svg?height=500&width=500",
     description: "A stylish towel holder made from hand-polished brass.",
   },
   {
@@ -48,7 +48,7 @@ const bestsellingProducts = [
     price: 69.99,
     rating: 5,
     reviewCount: 92,
-    image: "/placeholder.svg?height=500&width=500",
+    images: "/placeholder.svg?height=500&width=500",
     description:
       "A unique toothbrush holder handcrafted from high-quality ceramic.",
   },
@@ -58,7 +58,7 @@ const bestsellingProducts = [
     price: 149.99,
     rating: 4,
     reviewCount: 57,
-    image: "/placeholder.svg?height=500&width=500",
+    images: "/placeholder.svg?height=500&width=500",
     description: "A beautiful bath tray made from rich walnut wood.",
   },
 ];
@@ -172,15 +172,16 @@ const categories: TCategory[] = [
     ],
   },
 ];
-const products = [
+const products: Product[] = [
   // Bồn cầu
   {
     id: "1",
     name: "Bồn cầu 1 khối cao cấp",
     category_id: "1",
     subcategory_id: "1-1",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/cw542hme5unw1_tcf802c2z_4x_ad1b8afad3f24d86993a3d1d21a9c36a_medium.png",
+    ],
     price: 4500000,
     star: 4.5,
     description: "Bồn cầu 1 khối thiết kế sang trọng, tiết kiệm nước.",
@@ -191,8 +192,9 @@ const products = [
     name: "Bồn cầu 2 khối tiện dụng",
     category_id: "1",
     subcategory_id: "1-2",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/cw553_toto_tuantu2_dc03b21f49024554a95d91d67f80fa9b_medium.jpg",
+    ],
     price: 3200000,
     star: 4.3,
     description: "Bồn cầu 2 khối với hệ thống xả mạnh mẽ, dễ dàng lắp đặt.",
@@ -203,8 +205,9 @@ const products = [
     name: "Bồn cầu thông minh Nhật Bản",
     category_id: "1",
     subcategory_id: "1-3",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/cw822rea-w-tcf4911ez-nw1-2_744820aa3d5b49608936c77511fb5bd6_grande.jpg",
+    ],
     price: 12000000,
     star: 4.8,
     description: "Bồn cầu thông minh với hệ thống tự động rửa, sưởi ấm.",
@@ -217,8 +220,9 @@ const products = [
     name: "Nắp đóng êm nhựa cao cấp",
     category_id: "2",
     subcategory_id: "2-1",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/tc395vs_w_ab2d27275c0a485ca9c154e053ae961a_medium.jpg",
+    ],
     price: 750000,
     star: 4.0,
     description: "Nắp bồn cầu đóng êm, hạn chế tiếng ồn khi sử dụng.",
@@ -229,8 +233,9 @@ const products = [
     name: "Nắp rửa cơ tiện dụng",
     category_id: "2",
     subcategory_id: "2-2",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/tc385vs_f3b71098d9d34ac08a8e496bd77aa15d_2fd140bdd9f84596a00f9745e85771ea_medium.jpg",
+    ],
     price: 1500000,
     star: 4.2,
     description: "Nắp bồn cầu rửa cơ giúp vệ sinh sạch sẽ hơn.",
@@ -241,8 +246,9 @@ const products = [
     name: "Nắp rửa điện tử cảm ứng",
     category_id: "2",
     subcategory_id: "2-3",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/s5-tcf34320gaa_nw1_9d3d42966b0541b9af4a9ffd12e9341f_medium.jpeg",
+    ],
     price: 8500000,
     star: 4.9,
     description: "Nắp rửa điện tử cảm ứng, tự động xả nước.",
@@ -255,8 +261,9 @@ const products = [
     name: "Sen cây inox 304",
     category_id: "3",
     subcategory_id: "3-1",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/dbx114_1cam_e9d59501bd5c4f0e9a0458789f136d5e_5ecb9d4ff2624d1f85b6f905ca16b699_medium.jpg",
+    ],
     price: 2800000,
     star: 4.6,
     description: "Bộ sen cây inox 304 chống rỉ sét, thiết kế hiện đại.",
@@ -267,8 +274,9 @@ const products = [
     name: "Sen tắm thường giá rẻ",
     category_id: "3",
     subcategory_id: "3-2",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/anh_chup_man_hinh_2024-04-06_luc_13.52.38_1b40f539bfca4e92806d01e211c8de8d_medium.png",
+    ],
     price: 1200000,
     star: 4.0,
     description: "Sen tắm thường với giá cả phải chăng, phù hợp mọi gia đình.",
@@ -279,8 +287,9 @@ const products = [
     name: "Sen âm trần sang trọng",
     category_id: "3",
     subcategory_id: "3-3",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/tbw02003b1b_mbl_f959387d1d49405780eb197a0ceb42f1_medium.jpeg",
+    ],
     price: 6000000,
     star: 4.7,
     description: "Sen âm trần thiết kế sang trọng, tạo không gian spa.",
@@ -293,8 +302,9 @@ const products = [
     name: "Vòi chậu rửa mặt nóng lạnh",
     category_id: "4",
     subcategory_id: "4-2",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/tbp02303a_bn_91b072ee69b442f29ea1e25b3dec0db2_medium.jpg",
+    ],
     price: 1800000,
     star: 4.7,
     description: "Vòi chậu rửa mặt với chế độ nóng lạnh tiện lợi.",
@@ -305,8 +315,9 @@ const products = [
     name: "Vòi bồn tắm mạ crom",
     category_id: "4",
     subcategory_id: "4-3",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/tbp02202a_bn_457f1bddbe5d4ec7b9e82fdef3e5037c_medium.jpg",
+    ],
     price: 3500000,
     star: 4.5,
     description: "Vòi bồn tắm mạ crom sang trọng, độ bền cao.",
@@ -319,8 +330,9 @@ const products = [
     name: "Chậu rửa âm bàn gốm sứ",
     category_id: "5",
     subcategory_id: "5-1",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/capture_5_1da2c9e41b944365ae7cff50dd041ba8_c0f5258c98ce4f9d98496890f0e4d83a_medium.png",
+    ],
     price: 2500000,
     star: 4.8,
     description: "Chậu rửa âm bàn bằng gốm sứ cao cấp, dễ vệ sinh.",
@@ -331,8 +343,9 @@ const products = [
     name: "Chậu rửa đặt bàn hình tròn",
     category_id: "5",
     subcategory_id: "5-2",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/img_1752_3f2dbc5660e545728ad8692533149732_medium.jpg",
+    ],
     price: 2100000,
     star: 4.6,
     description: "Chậu rửa đặt bàn hình tròn tinh tế, hiện đại.",
@@ -345,8 +358,9 @@ const products = [
     name: "Bồn tắm massage cao cấp",
     category_id: "6",
     subcategory_id: "6-3",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/video_gxobabtzvos_5701ea9e3699417eb03ca08ec0ced516_medium.png",
+    ],
     price: 15000000,
     star: 4.9,
     description: "Bồn tắm massage với hệ thống sục khí, thư giãn tối đa.",
@@ -357,8 +371,9 @@ const products = [
     name: "Bồn tắm nằm hiện đại",
     category_id: "6",
     subcategory_id: "6-1",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/pjy1724hpwe_gw_pjy1724hpwe_mw_23bd341de31d4d639eef71ee0b9db94c_medium.jpg",
+    ],
     price: 11000000,
     star: 4.8,
     description: "Bồn tắm nằm thiết kế tối giản, phù hợp mọi không gian.",
@@ -371,8 +386,9 @@ const products = [
     name: "Kệ để đồ inox chống rỉ",
     category_id: "7",
     subcategory_id: "7-1",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/ys406n3v_a6bfdd45b7b94893a2949cce451ccf4f_a3a67f3938e54cd989996cfe2567b99a_medium.jpg",
+    ],
     price: 1200000,
     star: 4.5,
     description: "Kệ để đồ inox giúp sắp xếp nhà tắm gọn gàng hơn.",
@@ -383,8 +399,9 @@ const products = [
     name: "Gương phòng tắm cảm ứng",
     category_id: "7",
     subcategory_id: "7-2",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/ym4545fg1_0a8fae76c2ee4a2cab346625d01ee94f_801197867041428a9949a715247ad765_medium.jpg",
+    ],
     price: 3200000,
     star: 4.7,
     description: "Gương phòng tắm cảm ứng đèn LED chống mờ.",
@@ -395,8 +412,9 @@ const products = [
     name: "Móc treo khăn inox",
     category_id: "7",
     subcategory_id: "7-3",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/yt406w6v_307e42b4d2684a93bebb45224c966766_49a86972e8184647bedfeeb86c75a14c_medium.jpg",
+    ],
     price: 500000,
     star: 4.4,
     description: "Móc treo khăn bằng inox chắc chắn, không gỉ.",
@@ -409,8 +427,9 @@ const products = [
     name: "Bồn cầu âm tường",
     category_id: "1",
     subcategory_id: "1-1",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/cw542hme5unw1_tcf802c2z_4x_ad1b8afad3f24d86993a3d1d21a9c36a_medium.png",
+    ],
     price: 7000000,
     star: 4.6,
     description: "Bồn cầu âm tường thiết kế tối giản, tiết kiệm không gian.",
@@ -421,8 +440,9 @@ const products = [
     name: "Bồn cầu trẻ em",
     category_id: "1",
     subcategory_id: "1-2",
-    image:
+    images: [
       "https://product.hstatic.net/1000238289/product/cw542hme5unw1_tcf802c2z_4x_ad1b8afad3f24d86993a3d1d21a9c36a_medium.png",
+    ],
     price: 2500000,
     star: 4.5,
     description: "Bồn cầu nhỏ gọn, phù hợp với trẻ em.",
@@ -434,11 +454,13 @@ export interface Product {
   name: string;
   description: string;
   price: number;
-  image: string;
+  images: string[];
   category_id: string;
   subcategory_id: string;
   star: number;
   code: string;
+  detail?: string;
+  colors?: string[];
 }
 
 export {

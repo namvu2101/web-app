@@ -18,7 +18,7 @@ export function CartItem({ item }: Readonly<{ item: TAddCart }>) {
     <div className="flex items-center justify-between border-b py-4">
       <div className="flex items-center">
         <img
-          src={item.image || "/placeholder.svg"}
+          src={item.images[0] || "/placeholder.svg"}
           alt={item.name}
           className="w-16 h-16 object-cover mr-4"
         />

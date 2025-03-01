@@ -29,12 +29,12 @@ const saveCartToLocalStorage = (updatedCart: TCart) => {
   listeners.forEach((listener) => listener({ ...cart }));
 };
 
-export const addProductIntoCart = (product: Product) => {
+export const addProductIntoCart = (product: Product, quantity?: number) => {
   const updatedCart = { ...cart };
   if (updatedCart[product.id]) {
-    updatedCart[product.id].quantity += 1;
+    updatedCart[product.id].quantity += quantity ?? 1;
   } else {
-    updatedCart[product.id] = { ...product, quantity: 1 };
+    updatedCart[product.id] = { ...product, quantity: quantity ?? 1 };
   }
   saveCartToLocalStorage(updatedCart);
 };

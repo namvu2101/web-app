@@ -5,7 +5,7 @@ import { FormSelect } from "@/components/forms/form-select";
 import { Button } from "@/components/ui/button";
 import { useGetCart } from "@/context/cart";
 import { Filter, Search, ShoppingCart } from "lucide-react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useWatch } from "react-hook-form";
 
 export function ProductsHeader() {

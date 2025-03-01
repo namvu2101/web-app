@@ -4,10 +4,13 @@ import { AppSidebar } from "./components/app-sidebar";
 import { ProductsHeader } from "./components/products-header";
 import { FormProvider, useForm } from "react-hook-form";
 import { ProductGrid } from "./components/products-list";
+import { useSearchParams } from "next/navigation";
 
 export default function ProductsPage() {
+  const searchParams = useSearchParams();
+  const categoryId = searchParams.get("category");
   const methods = useForm({
-    defaultValues: { category: "0", subCategory: "0", search: "" },
+    defaultValues: { category: categoryId ?? "0", subCategory: "0", search: "" },
   });
   return (
     <SidebarProvider>
