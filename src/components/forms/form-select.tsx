@@ -46,7 +46,11 @@ export function FormSelect(
       render={({ field }) => (
         <FormItem className={className}>
           {label && <FormLabel>{label}</FormLabel>}
-          <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <Select
+            onValueChange={field.onChange}
+            defaultValue={field.value}
+            disabled={prop.disabled}
+          >
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder={field.value} />
             </SelectTrigger>

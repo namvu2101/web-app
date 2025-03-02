@@ -8,11 +8,12 @@ import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 import { CartItem } from "./CartItem";
 import { Convert } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export function Cart() {
+  const {push} = useRouter();
   const cart = useGetCart();
   const { setValue } = useFormContext();
-  console.log("render");
 
   useEffect(() => {
     cart.forEach((item) => {
@@ -58,7 +59,7 @@ export function Cart() {
                 <span>{Convert.numberWithCommas(totalPrice())} vnđ</span>
               </div>
             </div>
-            <Button className="w-full mt-4">Proceed to Checkout</Button>
+            <Button className="w-full mt-4" onClick={()=>push('/checkout')}>Thanh toán</Button>
           </div>
         </div>
       </div>

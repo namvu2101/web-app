@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { Heart, ShoppingCart } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { Product } from "@/app/data";
-import { Convert } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { addProductIntoCart } from "@/context/cart";
-import { useRouter } from "next/navigation";
 import { updateLikes, useGetLikes } from "@/context/likes";
+import { Convert } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { Eye, Heart, ShoppingCart } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export function ProductCard({ product }: Readonly<{ product: Product }>) {
   const { push } = useRouter();
@@ -30,38 +30,55 @@ export function ProductCard({ product }: Readonly<{ product: Product }>) {
       onClick={() => {
         push(`/product/${product.id}`);
       }}
-      className="group cursor-pointer"
+      className="group cursor-pointer flex flex-col justify-between h-full"
       whileHover={{ y: -1 }}
       transition={{ duration: 0.2 }}
     >
-      <div className="aspect-[4/5] bg-white  dark:bg-zinc-900 border-2 rounded-md overflow-hidden">
+      <div className="relative h-46 bg-white dark:bg-zinc-900 border-2 rounded-md overflow-hidden mt-3">
         <img
           src={product.images[0] || "/placeholder.svg"}
           alt={product.name}
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
         />
-        <Button
-          variant="secondary"
-          size="icon"
-          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
-          onClick={(e) => {
-            e.stopPropagation();
-            updateLikes(product);
-          }}
-        >
-          <Heart
-            className="h-4 w-4"
-            fill={isLiked ? "green" : "white"}
-            color={isLiked && "green"}
-          />
-        </Button>
+        <div className="absolute inset-0 bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+          <Button
+            size="sm"
+            variant="secondary"
+            className="gap-2"
+            onClick={() => push(`/product/${product.id}`)}
+          >
+            <Eye size={16} />
+            Xem chi tiết
+          </Button>
+        </div>
       </div>
-      <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
-      <p className="mt-1 text-lg font-medium text-gray-900">
-        {Convert.numberWithCommas(product.price)} vnđ
-      </p>
+
+      <div className="p-3 bg-white">
+        <h3 className="text-sm font-medium line-clamp-2 h-10 mb-1 text-gray-800">
+          {product.name}
+        </h3>
+        <div className="flex flex-wrap justify-between items-center">
+          <Button
+            size="icon"
+            variant="outline"
+            onClick={(e) => {
+              e.stopPropagation();
+              updateLikes(product);
+            }}
+          >
+            <Heart
+              className="h-4 w-4"
+              fill={isLiked ? "green" : "white"}
+              color={isLiked && "green"}
+            />
+          </Button>
+          <p className="text-sm font-bold text-primary">
+            {Convert.formatPrice(product.price)}
+          </p>
+        </div>
+      </div>
       <Button
-        className="w-full mt-2"
+        className="w-full mt-auto"
         onClick={(e) => {
           e.stopPropagation();
           handleAddToCart();
@@ -69,11 +86,11 @@ export function ProductCard({ product }: Readonly<{ product: Product }>) {
         disabled={isAdding}
       >
         {isAdding ? (
-          'Đang thêm ...'
+          "Đang thêm ..."
         ) : (
           <>
             <ShoppingCart className="mr-2 h-4 w-4" />
-              Thêm vào giỏ
+            Thêm vào giỏ
           </>
         )}
       </Button>

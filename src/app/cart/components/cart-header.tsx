@@ -7,7 +7,7 @@ import { Heart, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export function ProductHeader() {
+export function CartHeader() {
   const cart = useGetCart();
   const likes = useGetLikes();
   const { push } = useRouter();
@@ -33,7 +33,6 @@ export function ProductHeader() {
             );
           })}
         </div>
-        <div className="flex gap-4 items-center">
           <Button variant="ghost" className="hover:bg-neutral-100">
             <Heart className="h-5 w-5" />
             {likes.length > 0 && (
@@ -42,20 +41,6 @@ export function ProductHeader() {
               </div>
             )}
           </Button>
-          <Button
-            variant="ghost"
-            onClick={() => push("/cart")}
-            className="hover:bg-neutral-100"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            Giỏ hàng
-            {cart.length > 0 && (
-              <div className="top-0 right-0 flex items-center justify-center w-4 h-4 bg-red-500 text-white text-xs rounded-full">
-                <span className="text-2">{cart.length}</span>
-              </div>
-            )}
-          </Button>
-        </div>
       </div>
     </header>
   );

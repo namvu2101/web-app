@@ -2,12 +2,15 @@
 
 import { Button } from "@/components/ui/button";
 import { useGetCart } from "@/context/cart";
+import { useGetLikes } from "@/context/likes";
 import { Heart, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export function Header() {
   const cart = useGetCart();
+  const likes = useGetLikes();
+
   const { push } = useRouter();
   const titles: { title: string; href: string }[] = [
     { title: "Giới thiệu", href: "#" },
@@ -36,9 +39,13 @@ export function Header() {
 
         {/* Action Icons */}
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="icon" className="hover:bg-neutral-100">
+          <Button variant="ghost" className="hover:bg-neutral-100">
             <Heart className="h-5 w-5" />
-            <span className="sr-only">Wishlist</span>
+            {likes?.length > 0 && (
+              <div className="top-0 right-0 flex items-center justify-center w-4 h-4 bg-red-500 text-white text-xs rounded-full">
+                <span className="text-2">{likes.length}</span>
+              </div>
+            )}
           </Button>
           <Button
             variant="ghost"

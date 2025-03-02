@@ -6,11 +6,27 @@ import { FormProvider, useForm } from "react-hook-form";
 import { ProductGrid } from "./components/products-list";
 import { useSearchParams } from "next/navigation";
 
+export enum ESort {
+  ASC = "asc",
+  DESC = "desc",
+}
+
+export type TFormProducts = {
+  category: string;
+  subCategory: string;
+  search: string;
+  sort?: ESort;
+};
+
 export default function ProductsPage() {
   const searchParams = useSearchParams();
   const categoryId = searchParams.get("category");
   const methods = useForm({
-    defaultValues: { category: categoryId ?? "0", subCategory: "0", search: "" },
+    defaultValues: {
+      category: categoryId ?? "0",
+      subCategory: "0",
+      search: "",
+    },
   });
   return (
     <SidebarProvider>
