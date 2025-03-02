@@ -12,7 +12,7 @@ export function ProductImage() {
     <div className="space-y-4 ">
       <div className="w-3/4 max-w-full mx-auto overflow-hidden rounded-lg border border-border bg-white">
         <img
-          src={productData.images[0] || "/placeholder.svg"}
+          src={productData.images[selectedImage ?? 0] || "/placeholder.svg"}
           alt={productData.name}
           className="w-full h-auto object-cover p-4"
         />
@@ -22,7 +22,7 @@ export function ProductImage() {
           <div
             key={index}
             className={`w-20 h-20 md:w-24 md:h-24 rounded-md overflow-hidden cursor-pointer border-2 ${
-              selectedImage === index ? "border-primary" : "border-border"
+              selectedImage === index ? "border-blue-700" : "border-border"
             }`}
             onClick={() => setValue("indexImage", index)}
           >

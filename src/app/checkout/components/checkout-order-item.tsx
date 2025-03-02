@@ -1,9 +1,11 @@
+"use-client";
+
 import { TCart } from "@/context/cart";
 import { MinusIcon, PlusIcon } from "lucide-react";
 import { useFormContext, useWatch } from "react-hook-form";
 import { TCheckoutForm } from "../page";
 
-export function CheckoutOrderItem({ item }: TCart) {
+export function CheckoutOrderItem({ item }: Readonly<TCart>) {
   const { setValue, control } = useFormContext<TCheckoutForm>();
   const quantity = useWatch({
     control,
@@ -19,14 +21,6 @@ export function CheckoutOrderItem({ item }: TCart) {
     if (quantity == 1) return;
     setValue(`quantity.${item.id}`, quantity - 1);
   };
-
-  //   const removeItem = () => {
-  //     const currP = getValues("products");
-  //     setValue(
-  //       "products",
-  //       currP.filter((p) => p.id !== item.id)
-  //     );
-  //   };
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("vi-VN", {
@@ -65,13 +59,6 @@ export function CheckoutOrderItem({ item }: TCart) {
           >
             <PlusIcon className="h-4 w-4" />
           </button>
-          {/* <Button
-            onClick={removeItem}
-            variant="ghost"
-            size="icon"
-          >
-            <Trash2 className="h-4 w-4" />
-          </Button> */}
         </div>
       </div>
       <div className="text-right">
