@@ -181,6 +181,8 @@ const products: Product[] = [
     subcategory_id: "1-1",
     images: [
       "https://product.hstatic.net/1000238289/product/cw542hme5unw1_tcf802c2z_4x_ad1b8afad3f24d86993a3d1d21a9c36a_medium.png",
+      "https://product.hstatic.net/1000238289/product/cw553_toto_tuantu2_dc03b21f49024554a95d91d67f80fa9b_medium.jpg",
+      "https://product.hstatic.net/1000238289/product/cw542hme5unw1_tcf802c2z_4x_ad1b8afad3f24d86993a3d1d21a9c36a_medium.png",
     ],
     price: 4500000,
     star: 4.5,
@@ -194,6 +196,8 @@ const products: Product[] = [
     subcategory_id: "1-2",
     images: [
       "https://product.hstatic.net/1000238289/product/cw553_toto_tuantu2_dc03b21f49024554a95d91d67f80fa9b_medium.jpg",
+      "https://product.hstatic.net/1000238289/product/cw553_toto_tuantu2_dc03b21f49024554a95d91d67f80fa9b_medium.jpg",
+      "https://product.hstatic.net/1000238289/product/cw553_toto_tuantu2_dc03b21f49024554a95d91d67f80fa9b_medium.jpg",
     ],
     price: 3200000,
     star: 4.3,
@@ -206,6 +210,8 @@ const products: Product[] = [
     category_id: "1",
     subcategory_id: "1-3",
     images: [
+      "https://product.hstatic.net/1000238289/product/cw822rea-w-tcf4911ez-nw1-2_744820aa3d5b49608936c77511fb5bd6_grande.jpg",
+      "https://product.hstatic.net/1000238289/product/cw553_toto_tuantu2_dc03b21f49024554a95d91d67f80fa9b_medium.jpg",
       "https://product.hstatic.net/1000238289/product/cw822rea-w-tcf4911ez-nw1-2_744820aa3d5b49608936c77511fb5bd6_grande.jpg",
     ],
     price: 12000000,
@@ -222,6 +228,8 @@ const products: Product[] = [
     subcategory_id: "2-1",
     images: [
       "https://product.hstatic.net/1000238289/product/tc395vs_w_ab2d27275c0a485ca9c154e053ae961a_medium.jpg",
+      "https://product.hstatic.net/1000238289/product/tc395vs_w_ab2d27275c0a485ca9c154e053ae961a_medium.jpg",
+      "https://product.hstatic.net/1000238289/product/tc395vs_w_ab2d27275c0a485ca9c154e053ae961a_medium.jpg",
     ],
     price: 750000,
     star: 4.0,
@@ -235,6 +243,8 @@ const products: Product[] = [
     subcategory_id: "2-2",
     images: [
       "https://product.hstatic.net/1000238289/product/tc385vs_f3b71098d9d34ac08a8e496bd77aa15d_2fd140bdd9f84596a00f9745e85771ea_medium.jpg",
+      "https://product.hstatic.net/1000238289/product/tc385vs_f3b71098d9d34ac08a8e496bd77aa15d_2fd140bdd9f84596a00f9745e85771ea_medium.jpg",
+      "https://product.hstatic.net/1000238289/product/tc385vs_f3b71098d9d34ac08a8e496bd77aa15d_2fd140bdd9f84596a00f9745e85771ea_medium.jpg",
     ],
     price: 1500000,
     star: 4.2,
@@ -247,6 +257,8 @@ const products: Product[] = [
     category_id: "2",
     subcategory_id: "2-3",
     images: [
+      "https://product.hstatic.net/1000238289/product/s5-tcf34320gaa_nw1_9d3d42966b0541b9af4a9ffd12e9341f_medium.jpeg",
+      "https://product.hstatic.net/1000238289/product/s5-tcf34320gaa_nw1_9d3d42966b0541b9af4a9ffd12e9341f_medium.jpeg",
       "https://product.hstatic.net/1000238289/product/s5-tcf34320gaa_nw1_9d3d42966b0541b9af4a9ffd12e9341f_medium.jpeg",
     ],
     price: 8500000,
@@ -263,6 +275,8 @@ const products: Product[] = [
     subcategory_id: "3-1",
     images: [
       "https://product.hstatic.net/1000238289/product/dbx114_1cam_e9d59501bd5c4f0e9a0458789f136d5e_5ecb9d4ff2624d1f85b6f905ca16b699_medium.jpg",
+      "https://product.hstatic.net/1000238289/product/dbx114_1cam_e9d59501bd5c4f0e9a0458789f136d5e_5ecb9d4ff2624d1f85b6f905ca16b699_medium.jpg",
+      "https://product.hstatic.net/1000238289/product/dbx114_1cam_e9d59501bd5c4f0e9a0458789f136d5e_5ecb9d4ff2624d1f85b6f905ca16b699_medium.jpg",
     ],
     price: 2800000,
     star: 4.6,
@@ -276,6 +290,9 @@ const products: Product[] = [
     subcategory_id: "3-2",
     images: [
       "https://product.hstatic.net/1000238289/product/anh_chup_man_hinh_2024-04-06_luc_13.52.38_1b40f539bfca4e92806d01e211c8de8d_medium.png",
+      "https://product.hstatic.net/1000238289/product/anh_chup_man_hinh_2024-04-06_luc_13.52.38_1b40f539bfca4e92806d01e211c8de8d_medium.png",
+      "https://product.hstatic.net/1000238289/product/anh_chup_man_hinh_2024-04-06_luc_13.52.38_1b40f539bfca4e92806d01e211c8de8d_medium.png",
+      "https://product.hstatic.net/1000238289/product/anh_chup_man_hinh_2024-04-06_luc_13.52.38_1b40f539bfca4e92806d01e211c8de8d_medium.png",
     ],
     price: 1200000,
     star: 4.0,
@@ -288,6 +305,8 @@ const products: Product[] = [
     category_id: "3",
     subcategory_id: "3-3",
     images: [
+      "https://product.hstatic.net/1000238289/product/tbw02003b1b_mbl_f959387d1d49405780eb197a0ceb42f1_medium.jpeg",
+      "https://product.hstatic.net/1000238289/product/tbw02003b1b_mbl_f959387d1d49405780eb197a0ceb42f1_medium.jpeg",
       "https://product.hstatic.net/1000238289/product/tbw02003b1b_mbl_f959387d1d49405780eb197a0ceb42f1_medium.jpeg",
     ],
     price: 6000000,
@@ -304,6 +323,7 @@ const products: Product[] = [
     subcategory_id: "4-2",
     images: [
       "https://product.hstatic.net/1000238289/product/tbp02303a_bn_91b072ee69b442f29ea1e25b3dec0db2_medium.jpg",
+      "https://product.hstatic.net/1000238289/product/tbp02303a_bn_91b072ee69b442f29ea1e25b3dec0db2_medium.jpg",
     ],
     price: 1800000,
     star: 4.7,
@@ -316,6 +336,8 @@ const products: Product[] = [
     category_id: "4",
     subcategory_id: "4-3",
     images: [
+      "https://product.hstatic.net/1000238289/product/tbp02202a_bn_457f1bddbe5d4ec7b9e82fdef3e5037c_medium.jpg",
+      "https://product.hstatic.net/1000238289/product/tbp02202a_bn_457f1bddbe5d4ec7b9e82fdef3e5037c_medium.jpg",
       "https://product.hstatic.net/1000238289/product/tbp02202a_bn_457f1bddbe5d4ec7b9e82fdef3e5037c_medium.jpg",
     ],
     price: 3500000,

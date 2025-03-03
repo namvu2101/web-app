@@ -1,22 +1,18 @@
 "use client";
 
-import { Product } from "@/app/data";
+import type { Product } from "@/app/data";
 import { Button } from "@/components/ui/button";
 import { addProductIntoCart } from "@/context/cart";
-import { updateLikes, useGetLikes } from "@/context/likes";
 import { Convert } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Eye, Heart, ShoppingCart } from "lucide-react";
+import { ArrowRight, Eye, ShoppingCart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function ProductCard({ product }: Readonly<{ product: Product }>) {
   const { push } = useRouter();
-  const likes = useGetLikes();
 
   const [isAdding, setIsAdding] = useState(false);
-  const isLiked = likes.find((i) => i.id === product.id);
-
   const handleAddToCart = () => {
     setIsAdding(true);
     addProductIntoCart(product);
@@ -30,11 +26,11 @@ export function ProductCard({ product }: Readonly<{ product: Product }>) {
       onClick={() => {
         push(`/product/${product.id}`);
       }}
-      className="group cursor-pointer flex flex-col justify-between h-full"
+      className="group cursor-pointer flex flex-col justify-between h-full w-full"
       whileHover={{ y: -1 }}
       transition={{ duration: 0.2 }}
     >
-      <div className="relative h-46 bg-white dark:bg-zinc-900 border-2 rounded-md overflow-hidden mt-3">
+      <div className="relative h-40 sm:h-44 md:h-46 lg:h-52 bg-white dark:bg-zinc-900 border-2 rounded-md overflow-hidden mt-2 sm:mt-3">
         <img
           src={product.images[0] || "/placeholder.svg"}
           alt={product.name}
@@ -44,55 +40,43 @@ export function ProductCard({ product }: Readonly<{ product: Product }>) {
           <Button
             size="sm"
             variant="secondary"
-            className="gap-2"
-            onClick={() => push(`/product/${product.id}`)}
+            className="gap-1 sm:gap-2 text-xs sm:text-sm"
+            onClick={(e) => {
+              e.stopPropagation();
+              push(`/product/${product.id}`);
+            }}
           >
             <Eye size={16} />
-            Xem chi tiết
+            <span className="xs:inline">Xem chi tiết</span>
           </Button>
         </div>
       </div>
 
-      <div className="p-3 bg-white">
-        <h3 className="text-sm font-medium line-clamp-2 h-10 mb-1 text-gray-800">
+      <div className="p-2 sm:p-3 bg-white dark:bg-zinc-900">
+        <h3 className="text-xs sm:text-sm font-medium line-clamp-2 h-8 sm:h-10 mb-1 text-gray-800 dark:text-gray-200">
           {product.name}
         </h3>
         <div className="flex flex-wrap justify-between items-center">
-          <Button
-            size="icon"
-            variant="outline"
-            onClick={(e) => {
-              e.stopPropagation();
-              updateLikes(product);
-            }}
-          >
-            <Heart
-              className="h-4 w-4"
-              fill={isLiked ? "green" : "white"}
-              color={isLiked && "green"}
-            />
-          </Button>
-          <p className="text-sm font-bold text-primary">
+          <p className="text-xs sm:text-sm font-bold text-primary">
             {Convert.formatPrice(product.price)}
           </p>
+          <motion.div whileHover={{ x: 3 }} transition={{ duration: 0.2 }}>
+            <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500" />
+          </motion.div>
         </div>
       </div>
       <Button
-        className="w-full mt-auto"
+        className="w-full mt-1 sm:mt-auto text-xs sm:text-sm py-1 sm:py-2 h-auto"
+        size="sm"
         onClick={(e) => {
           e.stopPropagation();
           handleAddToCart();
         }}
         disabled={isAdding}
       >
-        {isAdding ? (
-          "Đang thêm ..."
-        ) : (
-          <>
-            <ShoppingCart className="mr-2 h-4 w-4" />
-            Thêm vào giỏ
-          </>
-        )}
+        <ShoppingCart className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+        <span className="hidden xs:inline">Thêm vào giỏ</span>
+        <span className="xs:hidden">Thêm</span>
       </Button>
     </motion.div>
   );

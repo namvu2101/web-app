@@ -1,26 +1,17 @@
 "use-client";
 
-import { Card, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { addProductIntoCart } from "@/context/cart";
 import { Convert } from "@/lib/utils";
 import { Separator } from "@radix-ui/react-separator";
-import {
-  Star,
-  Minus,
-  Plus,
-  ShoppingCart,
-  Heart,
-  HeartPulse,
-} from "lucide-react";
-import React, { Key } from "react";
+import { Minus, Plus, ShoppingCart, Star } from "lucide-react";
+import { Key } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 import { TFormProduct } from "../page";
-import { Button } from "@/components/ui/button";
-import { addProductIntoCart } from "@/context/cart";
-import { updateLikes, useGetLikes } from "@/context/likes";
 
 export function ProductDetail() {
   const { setValue, control, getValues } = useFormContext<TFormProduct>();
-  const likes = useGetLikes();
   const productData = getValues("product");
   const quantity = useWatch({ control, name: "quantity", exact: true });
   const decreaseQuantity = () => {
@@ -28,7 +19,6 @@ export function ProductDetail() {
       setValue("quantity", getValues("quantity") - 1);
     }
   };
-  const isLiked = likes.find((i) => i.id === productData.id);
   const increaseQuantity = () => {
     setValue("quantity", getValues("quantity") + 1);
   };
@@ -71,7 +61,7 @@ export function ProductDetail() {
               {(productData?.colors || ["white", "black"]).map(
                 (color: string | undefined, index: Key | null | undefined) => (
                   <div
-                    key={index}
+                    key={color + `${index}`}
                     className={`w-8 h-8 rounded-full cursor-pointer border ${
                       index === 0 ? "border-2 border-primary" : "border-border"
                     }`}
@@ -125,19 +115,6 @@ export function ProductDetail() {
             <ShoppingCart className="mr-2 h-4 w-4" />
             Thêm vào giỏ hàng
           </Button>
-          <Button
-            onClick={() => updateLikes(productData)}
-            variant="outline"
-            className="w-full py-6"
-            size="lg"
-          >
-            <Heart
-              className="mr-2 h-4 w-4"
-              fill={isLiked ? "green" : "white"}
-              color={isLiked && "green"}
-            />
-            Yêu thích
-          </Button>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4 text-sm">
@@ -189,7 +166,7 @@ export function ProductDetail() {
           <div className="space-y-2 text-sm">
             <p className="flex justify-between">
               <span className="text-muted-foreground">Kích thước:</span>
-              <span>4.5" x 3.2" x 8.7"</span>
+              <span>4.5 x 3.2 x 8.7</span>
             </p>
             <p className="flex justify-between">
               <span className="text-muted-foreground">Chất liệu:</span>

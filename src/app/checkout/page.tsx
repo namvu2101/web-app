@@ -1,52 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import {
-  ChevronLeft,
-  CreditCard,
-  MinusIcon,
-  PlusIcon,
-  ShoppingBag,
-  Truck,
-} from "lucide-react";
+import { useEffect } from "react";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
+import { useGetCart } from "@/context/cart";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 import { Footer } from "../main/components/home-footer";
 import { ProductHeader } from "../product/[id]/components/product-header";
-import { FormProvider, useForm } from "react-hook-form";
-import { TAddCart, TCart, useGetCart } from "@/context/cart";
 import { CheckoutMain } from "./components/checkout-main";
-import { useGetLocation } from "./modules/useGetLocation";
 
-export type TCheckoutForm = {
-  info: {};
-  total: number;
-  type: "card" | "banking" | "cod";
-  shipType: "standard" | "express";
-  products: TAddCart[];
-  quantity: Record<string, number>;
-};
+const checkoutSchema = z.object({
+  name: z.string().min(5, "Tên không được để trống"),
+  email: z.string().email("Email không hợp lệ"),
+  phone: z.string().length(10, "SĐT không đúng"),
+  address: z.string().min(1, "Trường này không được để trống"),
+  cityId: z.string().min(1, "Trường này không được để trống"),
+  districtId: z.string().min(1, "Trường này không được để trống"),
+  total: z.number().min(0),
+  type: z.enum(["card", "banking", "cod"]),
+  shipType: z.enum(["standard", "express"]),
+  products: z.array(z.any()), // Bạn có thể thay `z.any()` bằng schema cụ thể của sản phẩm nếu có
+  quantity: z.record(z.string(), z.number().min(1)), // Đảm bảo số lượng >= 1
+});
+
+export type TCheckoutForm = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
   const cart = useGetCart();
-  const {data} = useGetLocation();
-  console.log(data);
-  
+
   const methods = useForm<TCheckoutForm>({
+    resolver: zodResolver(checkoutSchema),
     defaultValues: {
-      info: {},
+      name: "",
+      email: "",
+      phone: "",
+      cityId: "",
+      districtId: "",
       total: 0,
       products: cart ?? [],
       quantity: {},
       shipType: "standard",
-      type: "card",
+      type: "banking",
     },
   });
 

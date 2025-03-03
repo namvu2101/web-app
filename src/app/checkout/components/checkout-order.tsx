@@ -1,13 +1,14 @@
+"use-client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useGetCart } from "@/context/cart";
-import { Separator } from "@radix-ui/react-separator";
-import { CheckoutOrderItem } from "./checkout-order-item";
 import { Convert } from "@/lib/utils";
+import { Separator } from "@radix-ui/react-separator";
+import { useMemo } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 import { TCheckoutForm } from "../page";
-import { useMemo } from "react";
+import { CheckoutOrderItem } from "./checkout-order-item";
 
 export function CheckoutOrder() {
   const { control, getValues } = useFormContext<TCheckoutForm>();
@@ -20,7 +21,7 @@ export function CheckoutOrder() {
   );
   const total = useMemo(() => {
     return subtotal + shipping;
-  }, [products, quantity]);
+  }, [products, quantity, subtotal]);
 
   return (
     <div className="lg:col-span-2">

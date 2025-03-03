@@ -29,7 +29,7 @@ export function FormSelect(
   const getItemLabel = (item: Items) => {
     if (typeof item === "string") {
       return item;
-    }
+    }    
     return item.name;
   };
 
@@ -43,7 +43,7 @@ export function FormSelect(
     <FormField
       {...prop}
       name={name}
-      render={({ field }) => (
+      render={({ field }) => (        
         <FormItem className={className}>
           {label && <FormLabel>{label}</FormLabel>}
           <Select
