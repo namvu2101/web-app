@@ -8,5 +8,6 @@ export type TFormProduct = {
   product: Product;
 };
 export default function ProductPage() {
-  return <ProductView />;
+  return  <ProductView />
+
 }
