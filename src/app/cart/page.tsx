@@ -7,10 +7,18 @@ import { CartHeader } from "./components/cart-header";
 export default function Page() {
   const methods = useForm({ defaultValues: { items: {} } });
   return (
-    <div>
+    // <div>
+    //   <FormProvider {...methods}>
+    //     <CartHeader/>
+    //     <Cart />
+    //   </FormProvider>
+    // </div>
+    <div className="min-h-screen flex flex-col">
       <FormProvider {...methods}>
-        <CartHeader/>
-        <Cart />
+        <CartHeader />
+        <main className="flex-grow">
+          <Cart />
+        </main>
       </FormProvider>
     </div>
   );

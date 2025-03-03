@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 import { useGetCart } from "@/context/cart";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
+import { FormProvider, useForm } from "react-hook-form";
 import { Footer } from "../main/components/home-footer";
 import { ProductHeader } from "../product/[id]/components/product-header";
 import { CheckoutMain } from "./components/checkout-main";
@@ -28,7 +28,6 @@ export type TCheckoutForm = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
   const cart = useGetCart();
-
   const methods = useForm<TCheckoutForm>({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {

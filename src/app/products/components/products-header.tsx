@@ -31,18 +31,23 @@ export function ProductsHeader() {
   return (
     <div className="mx-auto py-4 flex items-center justify-between">
       <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-50">
-        <div className="container mx-auto px-4">
-          {/* Main header row */}
-          <div className="flex items-center justify-between h-16">
-            {/* Logo - always visible */}
-            <Link href="/" className="text-2xl font-serif tracking-tight">
-              LUXBATH
-            </Link>
-
-            {/* Mobile menu toggle */}
+        <div className="container mx-auto px-4 flex items-center justify-between h-16">
+          <Link href="/" className="text-2xl font-serif tracking-tight">
+            LUXBATH
+          </Link>
+          <div className="flex gap-2 items-center py-2">
+            <FormInput
+              type="text"
+              name="search"
+              placeholder="Tìm kiếm sản phẩm..."
+              className="w-[400px]"
+            />
+            <Search className="text-gray-500" />
+          </div>
+          <div className="flex gap-4 items-center">
             <button
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => push("/cart")}
+              className="hover:bg-neutral-100"
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />

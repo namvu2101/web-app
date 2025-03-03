@@ -18,8 +18,8 @@ import image1 from "@/assets/image1.jpeg";
 import image2 from "@/assets/image2.jpg";
 import image3 from "@/assets/image3.jpg";
 import { redirect } from "next/navigation";
-import { ProductCard } from "@/app/products/components/products-card";
 import Link from "next/link";
+import { ProductCard } from "@/app/products/components/products-card";
 
 export function Body() {
   const images = [image1, image2, image3];

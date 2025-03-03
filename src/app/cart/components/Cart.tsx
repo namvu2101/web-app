@@ -26,9 +26,20 @@ export function Cart() {
 
   if (cart.length === 0) {
     return (
+      // <div className="container mx-auto px-4 py-16 text-center">
+      //   <h1 className="text-3xl font-serif mb-4">
+      //     Giỏ hàng của bàn đang trống
+      //   </h1>
+      //   <p className="mb-8">
+      //     Có vẻ như bạn chưa thêm bất kỳ sản phẩm nào vào giỏ hàng.
+      //   </p>
+      //   <Link href="/products">
+      //     <Button>Tiếp tục mua sắm</Button>
+      //   </Link>
+      // </div>
       <div className="container mx-auto px-4 py-16 text-center">
         <h1 className="text-3xl font-serif mb-4">
-          Giỏ hàng của bàn đang trống
+          Giỏ hàng của bạn đang trống
         </h1>
         <p className="mb-8">
           Có vẻ như bạn chưa thêm bất kỳ sản phẩm nào vào giỏ hàng.
@@ -41,25 +52,49 @@ export function Cart() {
   }
 
   return (
+    // <div className="container mx-auto px-4 py-16">
+    //   <h1 className="text-3xl font-serif mb-8">Giỏ hàng</h1>
+    //   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    //     <div className="md:col-span-2">
+    //       {cart.map((item) => (
+    //         <CartItem key={item.id} item={item} />
+    //       ))}
+    //     </div>
+    //     <div className="md:col-span-1">
+    //       <div className="bg-gray-100 p-6 rounded-lg">
+    //         <h2 className="text-xl font-medium mb-4">Tổng đơn hàng</h2>
+
+    //         <div className="border-t pt-2 mt-2">
+    //           <div className="flex justify-between font-medium">
+    //             <span>Tổng tiền:</span>
+    //             <span>{Convert.numberWithCommas(totalPrice())} vnđ</span>
+    //           </div>
+    //         </div>
+    //         <Button className="w-full mt-4" onClick={()=>push('/checkout')}>Thanh toán</Button>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
     <div className="container mx-auto px-4 py-16">
       <h1 className="text-3xl font-serif mb-8">Giỏ hàng</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
           {cart.map((item) => (
             <CartItem key={item.id} item={item} />
           ))}
         </div>
-        <div className="md:col-span-1">
-          <div className="bg-gray-100 p-6 rounded-lg">
+        <div className="lg:col-span-1">
+          <div className="bg-gray-100 p-6 rounded-lg sticky top-20">
             <h2 className="text-xl font-medium mb-4">Tổng đơn hàng</h2>
-
             <div className="border-t pt-2 mt-2">
               <div className="flex justify-between font-medium">
                 <span>Tổng tiền:</span>
                 <span>{Convert.numberWithCommas(totalPrice())} vnđ</span>
               </div>
             </div>
-            <Button className="w-full mt-4" onClick={()=>push('/checkout')}>Thanh toán</Button>
+            <Button className="w-full mt-4" onClick={() => push('/checkout')}>
+              Thanh toán
+            </Button>
           </div>
         </div>
       </div>

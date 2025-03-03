@@ -1,39 +1,47 @@
 "use client";
 
 import { categories } from "@/app/data";
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
+  SidebarMenu,
   SidebarRail,
+  useSidebar,
 } from "@/components/ui/sidebar";
+import { Menu } from "lucide-react";
 import * as React from "react";
 import { NavBody } from "./nav-body";
-import Link from "next/link";
-import { Menu } from "lucide-react";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { toggleSidebar, state } = useSidebar();
+  const isOpen = state === "expanded";
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <div className="flex justify-center items-center gap-2 mb-8">
-          <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-01-12%20at%2012.32.42%20PM-QicgA83ZI0TfZlOynDOqlhOGnbwzEv.jpeg"
-            alt="Chili POS Logo"
-            className="w-8 h-8"
-          />
-          <Link href="../" className="font-semibold">
-            Trang chủ
-          </Link>
-        </div>
+        <div className="h-16" />
       </SidebarHeader>
-      <SidebarContent>
-        <div className="flex gap-2 justify-center">
+      <SidebarMenu />
+      {isOpen && (
+        <SidebarContent>
+          <Button
+            variant="ghost"
+            className="w-full flex gap-2 justify-center items-center "
+            onClick={toggleSidebar}
+          >
+            <Menu />
+            Danh sách sản phẩm
+          </Button>
+          <NavBody items={categories} />
+        </SidebarContent>
+      )}
+      {!isOpen && (
+        <Button variant="ghost" onClick={toggleSidebar}>
           <Menu />
-          <span>Danh sách sản phẩm</span>
-        </div>
-        <NavBody items={categories} />
-      </SidebarContent>
+        </Button>
+      )}
       <SidebarRail />
     </Sidebar>
   );

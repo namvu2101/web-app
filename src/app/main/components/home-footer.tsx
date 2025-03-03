@@ -1,10 +1,12 @@
 "use-client";
 
+import Link from "next/link";
+
 export function Footer() {
   return (
     <footer className="bg-gray-50 border-t mt-20">
-      <div className="max-w-7xl mx-auto py-10 px-6">
-        <div className="grid md:grid-cols-4 gap-8">
+      <div className="container mx-auto py-10 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <h3 className="font-bold text-lg mb-4">LUXBATH</h3>
             <p className="text-sm text-gray-600">
@@ -15,51 +17,35 @@ export function Footer() {
           <div>
             <h3 className="font-bold mb-4">Liên kết nhanh</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Trang chủ
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Sản phẩm
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Về chúng tôi
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Liên hệ
-                </a>
-              </li>
+              {["Trang chủ", "Sản phẩm", "Về chúng tôi", "Liên hệ"].map(
+                (item) => (
+                  <li key={item}>
+                    <Link
+                      href="#"
+                      className="text-gray-600 hover:text-gray-900"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
           <div>
             <h3 className="font-bold mb-4">Hỗ trợ</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  FAQs
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Chính sách vận chuyển
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Chính sách đổi trả
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Điều khoản dịch vụ
-                </a>
-              </li>
+              {[
+                "FAQs",
+                "Chính sách vận chuyển",
+                "Chính sách đổi trả",
+                "Điều khoản dịch vụ",
+              ].map((item) => (
+                <li key={item}>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900">
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>

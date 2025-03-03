@@ -154,36 +154,6 @@ export function CheckoutInfo() {
           </h2>
           <Card>
             <CardContent className="p-6">
-              {/* <div
-              className={`flex items-center justify-between border rounded-lg p-4 mb-3 cursor-pointer transition-all ${
-                type === "card"
-                  ? "border-blue-500 shadow-md"
-                  : "border-gray-300"
-              }`}
-              onClick={() => {
-                setValue("type", "card");
-              }}
-            >
-              <div className="flex items-center gap-3">
-                <Label
-                  htmlFor="card"
-                  className="flex items-center gap-2 cursor-pointer"
-                >
-                  <Circle
-                    className="h-4 w-4"
-                    fill={type === "card" ? "blue" : "white"}
-                  />
-                  <CreditCard className="h-5 w-5" />
-                  <div>
-                    <p className="font-medium">Thẻ tín dụng/Ghi nợ</p>
-                    <p className="text-sm text-gray-500">
-                      Visa, Mastercard, JCB
-                    </p>
-                  </div>
-                </Label>
-              </div>
-            </div> */}
-
               <div
                 className={`flex items-center justify-between border rounded-lg p-4 mb-3 cursor-pointer transition-all ${
                   type === "banking"
