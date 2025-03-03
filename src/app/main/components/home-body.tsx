@@ -6,20 +6,18 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 // Import ảnh từ assets
+import { ProductCard } from "@/app/products/components/products-card";
 import image1 from "@/assets/image1.jpeg";
 import image2 from "@/assets/image2.jpg";
 import image3 from "@/assets/image3.jpg";
-import { redirect } from "next/navigation";
-import { ProductCard } from "@/app/products/components/products-card";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export function Body() {
   const images = [image1, image2, image3];
@@ -61,18 +59,6 @@ export function Body() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious
-              onClick={() =>
-                setActiveIndex(
-                  (prev) => (prev - 1 + images.length) % images.length
-                )
-              }
-            />
-            <CarouselNext
-              onClick={() =>
-                setActiveIndex((prev) => (prev + 1) % images.length)
-              }
-            />
           </Carousel>
         </div>
 

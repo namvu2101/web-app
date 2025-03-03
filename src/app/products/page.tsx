@@ -19,13 +19,17 @@ export default function ProductsPage() {
   return (
     <SidebarProvider>
       <FormProvider {...methods}>
-        <AppSidebar />
-        <SidebarInset>
-          <div className="p-10">
-            <ProductsHeader />
-            <ProductGrid />
+        <div className="flex flex-col md:flex-row">
+          <AppSidebar />
+          <div className="flex-grow">
+            <SidebarInset>
+              <div className="p-4 md:p-6 lg:p-8">
+                <ProductsHeader />
+                <ProductGrid />
+              </div>
+            </SidebarInset>
           </div>
-        </SidebarInset>
+        </div>
       </FormProvider>
     </SidebarProvider>
   );

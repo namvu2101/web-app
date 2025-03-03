@@ -2,9 +2,10 @@
 import { categories } from "@/app/data";
 import { Button } from "@/components/ui/button";
 import { useGetCart } from "@/context/cart";
-import { ShoppingCart } from "lucide-react";
+import { Menu, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function ProductHeader() {
   const cart = useGetCart();
@@ -15,36 +16,55 @@ export function ProductHeader() {
         <Link href="/" className="text-2xl font-serif tracking-tight">
           LUXBATH
         </Link>
-        <div className="flex">
-          {categories.map((item) => {
-            return (
-              <Button
-                key={item.id}
-                variant="ghost"
-                className="justify-start hover:bg-green-100"
-                onClick={() => {
-                  push(`/products?category=${item.id}`);
-                }}
-              >
-                {item.name}
-              </Button>
-            );
-          })}
-        </div>
-        <div className="flex gap-4 items-center">
+        <nav className="hidden md:flex">
+          {categories.map((item) => (
+            <Button
+              key={item.id}
+              variant="ghost"
+              className="justify-start hover:bg-green-100"
+              onClick={() => push(`/products?category=${item.id}`)}
+            >
+              {item.name}
+            </Button>
+          ))}
+        </nav>
+        <div className="flex items-center space-x-4">
           <Button
             variant="ghost"
             onClick={() => push("/cart")}
-            className="hover:bg-neutral-100"
+            className="relative"
           >
             <ShoppingCart className="h-5 w-5" />
-            Giỏ hàng
-            {cart.length > 0 && (
-              <div className="top-0 right-0 flex items-center justify-center w-4 h-4 bg-red-500 text-white text-xs rounded-full">
-                <span className="text-2">{cart.length}</span>
-              </div>
+            {cart?.length > 0 && (
+              <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 bg-red-500 text-white text-xs rounded-full">
+                {cart.length}
+              </span>
             )}
+            <span className=" hidden sm:inline">Giỏ hàng</span>
           </Button>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <nav className="flex flex-col space-y-4">
+                {categories.map((item) => (
+                  <Button
+                    key={item.id}
+                    variant="ghost"
+                    className="justify-start hover:bg-green-100"
+                    onClick={() => {
+                      push(`/products?category=${item.id}`);
+                    }}
+                  >
+                    {item.name}
+                  </Button>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
