@@ -75,8 +75,7 @@ export function ProductCard({ product }: Readonly<{ product: Product }>) {
         disabled={isAdding}
       >
         <ShoppingCart className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-        <span className="hidden xs:inline">Thêm vào giỏ</span>
-        <span className="xs:hidden">Thêm</span>
+        <span className="ms:hidden">Thêm vào giỏ</span>
       </Button>
     </motion.div>
   );

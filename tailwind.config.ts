@@ -12,5 +12,6 @@ export default {
   theme: {
     extend: {},
   },
+  darkMode: "media",
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

@@ -3,7 +3,6 @@ export enum EShipType {
   express = "express",
 }
 export enum EPaymentType {
-  card = "card",
   banking = "banking",
   cod = "cod",
 }

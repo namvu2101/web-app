@@ -10,6 +10,7 @@ import { Footer } from "../main/components/home-footer";
 import { ProductHeader } from "../product/[id]/components/product-header";
 import { CheckoutMain } from "./components/checkout-main";
 import { EPaymentType, EShipType } from "./types";
+import { CheckoutQR } from "./components/checkout-qrCode";
 
 const checkoutSchema = z.object({
   name: z.string().min(5, "Tên không được để trống"),
@@ -19,10 +20,10 @@ const checkoutSchema = z.object({
   cityId: z.string().min(1, "Trường này không được để trống"),
   districtId: z.string().min(1, "Trường này không được để trống"),
   total: z.number().min(0),
-  type: z.enum([EPaymentType.card, EPaymentType.banking, EPaymentType.cod]),
+  type: z.enum([EPaymentType.banking, EPaymentType.cod]),
   shipType: z.enum([EShipType.standard, EShipType.express]),
-  products: z.array(z.any()), // Bạn có thể thay `z.any()` bằng schema cụ thể của sản phẩm nếu có
-  quantity: z.record(z.string(), z.number().min(1)), // Đảm bảo số lượng >= 1
+  products: z.array(z.any()),
+  quantity: z.record(z.string(), z.number().min(1)),
 });
 
 export type TCheckoutForm = z.infer<typeof checkoutSchema>;
@@ -57,6 +58,7 @@ export default function CheckoutPage() {
         <ProductHeader />
         <CheckoutMain />
       </FormProvider>
+      <CheckoutQR />
       <Footer />
     </div>
   );

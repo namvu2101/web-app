@@ -1,6 +1,6 @@
 "use client";
 
-import { products } from "@/app/data";
+import { categories, products } from "@/app/data";
 import { ProductCard } from "@/app/products/components/products-card";
 import { useWatch } from "react-hook-form";
 import { useMemo } from "react";
@@ -34,17 +34,15 @@ export function ProductGrid() {
     if (!sort) return filterBySearch;
     return [...filterBySearch].sort((a, b) => a.price - b.price);
   }, [sort, filterBySearch]);
-
+  const categoryName = categories.find((c) => c.id === categoryId)?.name ?? "";
   return (
-    // <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2">
-    //   {sortedProducts.map((product) => (
-    //     <ProductCard key={product.id} product={product} />
-    //   ))}
-    // </div>
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-      {sortedProducts.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+    <div className="items-center">
+      <span>{categoryName}</span>
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+        {sortedProducts.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
     </div>
   );
 }

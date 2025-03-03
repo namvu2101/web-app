@@ -1,7 +1,12 @@
 "use-client";
 import { categories } from "@/app/data";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@radix-ui/react-dropdown-menu";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -26,30 +31,29 @@ export function CartHeader() {
             </Button>
           ))}
         </nav>
-        <div className="flex items-center space-x-4">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <nav className="flex flex-col space-y-4">
-                {categories.map((item) => (
-                  <Button
-                    key={item.id}
-                    variant="ghost"
-                    className="justify-start hover:bg-green-100"
-                    onClick={() => {
-                      push(`/products?category=${item.id}`);
-                    }}
-                  >
-                    {item.name}
-                  </Button>
-                ))}
-              </nav>
-            </SheetContent>
-          </Sheet>
+        <div className="md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="p-2 rounded-md border border-gray-300 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800">
+                <Menu size={24} />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="end"
+              className="w-48 bg-white dark:bg-gray-900 shadow-lg rounded-lg p-2 border border-gray-200 dark:border-gray-700 z-[999] fixed top-12 right-4 motion-safe:animate-fadeIn"
+            >
+              {categories.map((item) => (
+                <DropdownMenuItem
+                  key={item.id}
+                  className="px-4 z-[999] rounded-md text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all cursor-pointer"
+                >
+                  <Link href={`/products?category=${item.id}`}>
+                    <Button variant="link">{item.name}</Button>
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>

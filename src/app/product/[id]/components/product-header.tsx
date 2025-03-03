@@ -2,10 +2,15 @@
 import { categories } from "@/app/data";
 import { Button } from "@/components/ui/button";
 import { useGetCart } from "@/context/cart";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@radix-ui/react-dropdown-menu";
 import { Menu, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function ProductHeader() {
   const cart = useGetCart();
@@ -29,42 +34,46 @@ export function ProductHeader() {
           ))}
         </nav>
         <div className="flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            onClick={() => push("/cart")}
-            className="relative"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            {cart?.length > 0 && (
-              <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 bg-red-500 text-white text-xs rounded-full">
-                {cart.length}
-              </span>
-            )}
-            <span className=" hidden sm:inline">Giỏ hàng</span>
-          </Button>
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <nav className="flex flex-col space-y-4">
+          <Link href={"/cart"}>
+            <Button
+              variant="outline"
+              onClick={() => push("/cart")}
+              className="relative"
+            >
+              <ShoppingCart className="h-5 w-5" />
+              {cart?.length > 0 && (
+                <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 bg-red-500 text-white text-xs rounded-full">
+                  {cart.length}
+                </span>
+              )}
+              <span className=" hidden sm:inline">Giỏ hàng</span>
+            </Button>
+          </Link>
+
+          <div className="md:hidden">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="p-2 rounded-md border border-gray-300 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800">
+                  <Menu size={24} />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="end"
+                className="w-48 bg-white dark:bg-gray-900 shadow-lg rounded-lg p-2 border border-gray-200 dark:border-gray-700 z-[999] fixed top-12 right-4 motion-safe:animate-fadeIn"
+              >
                 {categories.map((item) => (
-                  <Button
+                  <DropdownMenuItem
                     key={item.id}
-                    variant="ghost"
-                    className="justify-start hover:bg-green-100"
-                    onClick={() => {
-                      push(`/products?category=${item.id}`);
-                    }}
+                    className="px-4 z-[999] rounded-md text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all cursor-pointer"
                   >
-                    {item.name}
-                  </Button>
+                    <Link href={`/products?category=${item.id}`}>
+                      <Button variant="link">{item.name}</Button>
+                    </Link>
+                  </DropdownMenuItem>
                 ))}
-              </nav>
-            </SheetContent>
-          </Sheet>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
       </div>
     </header>

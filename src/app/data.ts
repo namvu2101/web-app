@@ -1,91 +1,3 @@
-import { Award, Truck, ShieldCheck } from "lucide-react";
-
-const featuredCollections = [
-  {
-    id: 1,
-    name: "Marble Collection",
-    description: "Timeless elegance crafted from premium Italian marble",
-    images: "/placeholder.svg?height=600&width=800",
-  },
-  {
-    id: 2,
-    name: "Brass Essentials",
-    description: "Hand-polished brass accessories with a modern twist",
-    images: "/placeholder.svg?height=600&width=800",
-  },
-  {
-    id: 3,
-    name: "Scandinavian Minimalism",
-    description:
-      "Clean lines and functional design for the contemporary bathroom",
-    images: "/placeholder.svg?height=600&width=800",
-  },
-];
-
-const bestsellingProducts = [
-  {
-    id: 1,
-    name: "Marble Soap Dispenser",
-    price: 89.99,
-    rating: 5,
-    reviewCount: 124,
-    images: "/placeholder.svg?height=500&width=500",
-    description:
-      "A luxurious soap dispenser crafted from premium Italian marble.",
-  },
-  {
-    id: 2,
-    name: "Brass Towel Holder",
-    price: 129.99,
-    rating: 4,
-    reviewCount: 86,
-    images: "/placeholder.svg?height=500&width=500",
-    description: "A stylish towel holder made from hand-polished brass.",
-  },
-  {
-    id: 3,
-    name: "Handcrafted Ceramic Toothbrush Holder",
-    price: 69.99,
-    rating: 5,
-    reviewCount: 92,
-    images: "/placeholder.svg?height=500&width=500",
-    description:
-      "A unique toothbrush holder handcrafted from high-quality ceramic.",
-  },
-  {
-    id: 4,
-    name: "Walnut Wood Bath Tray",
-    price: 149.99,
-    rating: 4,
-    reviewCount: 57,
-    images: "/placeholder.svg?height=500&width=500",
-    description: "A beautiful bath tray made from rich walnut wood.",
-  },
-];
-
-const features = [
-  {
-    id: 1,
-    title: "Premium Materials",
-    description:
-      "We source only the finest materials from around the world to create our luxury bathroom utensils.",
-    icon: Award,
-  },
-  {
-    id: 2,
-    title: "Free Shipping",
-    description:
-      "Enjoy complimentary shipping on all orders over $150, carefully packaged to ensure safe delivery.",
-    icon: Truck,
-  },
-  {
-    id: 3,
-    title: "5-Year Warranty",
-    description:
-      "Our confidence in our craftsmanship is backed by an industry-leading 5-year warranty on all products.",
-    icon: ShieldCheck,
-  },
-];
 type TCategory = {
   id: string;
   name: string;
@@ -185,7 +97,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/cw542hme5unw1_tcf802c2z_4x_ad1b8afad3f24d86993a3d1d21a9c36a_medium.png",
     ],
     price: 4500000,
-    star: 4.5,
+    star: 4,
     description: "Bồn cầu 1 khối thiết kế sang trọng, tiết kiệm nước.",
     code: "BC001",
   },
@@ -200,7 +112,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/cw553_toto_tuantu2_dc03b21f49024554a95d91d67f80fa9b_medium.jpg",
     ],
     price: 3200000,
-    star: 4.3,
+    star: 4,
     description: "Bồn cầu 2 khối với hệ thống xả mạnh mẽ, dễ dàng lắp đặt.",
     code: "BC002",
   },
@@ -215,7 +127,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/cw822rea-w-tcf4911ez-nw1-2_744820aa3d5b49608936c77511fb5bd6_grande.jpg",
     ],
     price: 12000000,
-    star: 4.8,
+    star: 4,
     description: "Bồn cầu thông minh với hệ thống tự động rửa, sưởi ấm.",
     code: "BC003",
   },
@@ -232,7 +144,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/tc395vs_w_ab2d27275c0a485ca9c154e053ae961a_medium.jpg",
     ],
     price: 750000,
-    star: 4.0,
+    star: 4,
     description: "Nắp bồn cầu đóng êm, hạn chế tiếng ồn khi sử dụng.",
     code: "NBC001",
   },
@@ -262,7 +174,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/s5-tcf34320gaa_nw1_9d3d42966b0541b9af4a9ffd12e9341f_medium.jpeg",
     ],
     price: 8500000,
-    star: 4.9,
+    star: 4,
     description: "Nắp rửa điện tử cảm ứng, tự động xả nước.",
     code: "NBC003",
   },
@@ -279,7 +191,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/dbx114_1cam_e9d59501bd5c4f0e9a0458789f136d5e_5ecb9d4ff2624d1f85b6f905ca16b699_medium.jpg",
     ],
     price: 2800000,
-    star: 4.6,
+    star: 4,
     description: "Bộ sen cây inox 304 chống rỉ sét, thiết kế hiện đại.",
     code: "ST001",
   },
@@ -295,7 +207,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/anh_chup_man_hinh_2024-04-06_luc_13.52.38_1b40f539bfca4e92806d01e211c8de8d_medium.png",
     ],
     price: 1200000,
-    star: 4.0,
+    star: 4,
     description: "Sen tắm thường với giá cả phải chăng, phù hợp mọi gia đình.",
     code: "ST002",
   },
@@ -310,7 +222,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/tbw02003b1b_mbl_f959387d1d49405780eb197a0ceb42f1_medium.jpeg",
     ],
     price: 6000000,
-    star: 4.7,
+    star: 4,
     description: "Sen âm trần thiết kế sang trọng, tạo không gian spa.",
     code: "ST003",
   },
@@ -326,7 +238,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/tbp02303a_bn_91b072ee69b442f29ea1e25b3dec0db2_medium.jpg",
     ],
     price: 1800000,
-    star: 4.7,
+    star: 4,
     description: "Vòi chậu rửa mặt với chế độ nóng lạnh tiện lợi.",
     code: "V001",
   },
@@ -341,7 +253,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/tbp02202a_bn_457f1bddbe5d4ec7b9e82fdef3e5037c_medium.jpg",
     ],
     price: 3500000,
-    star: 4.5,
+    star: 4,
     description: "Vòi bồn tắm mạ crom sang trọng, độ bền cao.",
     code: "V002",
   },
@@ -356,7 +268,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/capture_5_1da2c9e41b944365ae7cff50dd041ba8_c0f5258c98ce4f9d98496890f0e4d83a_medium.png",
     ],
     price: 2500000,
-    star: 4.8,
+    star: 4,
     description: "Chậu rửa âm bàn bằng gốm sứ cao cấp, dễ vệ sinh.",
     code: "CR001",
   },
@@ -369,7 +281,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/img_1752_3f2dbc5660e545728ad8692533149732_medium.jpg",
     ],
     price: 2100000,
-    star: 4.6,
+    star: 5,
     description: "Chậu rửa đặt bàn hình tròn tinh tế, hiện đại.",
     code: "CR002",
   },
@@ -384,7 +296,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/video_gxobabtzvos_5701ea9e3699417eb03ca08ec0ced516_medium.png",
     ],
     price: 15000000,
-    star: 4.9,
+    star: 4,
     description: "Bồn tắm massage với hệ thống sục khí, thư giãn tối đa.",
     code: "BT001",
   },
@@ -397,7 +309,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/pjy1724hpwe_gw_pjy1724hpwe_mw_23bd341de31d4d639eef71ee0b9db94c_medium.jpg",
     ],
     price: 11000000,
-    star: 4.8,
+    star: 5,
     description: "Bồn tắm nằm thiết kế tối giản, phù hợp mọi không gian.",
     code: "BT002",
   },
@@ -425,7 +337,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/ym4545fg1_0a8fae76c2ee4a2cab346625d01ee94f_801197867041428a9949a715247ad765_medium.jpg",
     ],
     price: 3200000,
-    star: 4.7,
+    star: 5,
     description: "Gương phòng tắm cảm ứng đèn LED chống mờ.",
     code: "PK002",
   },
@@ -438,7 +350,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/yt406w6v_307e42b4d2684a93bebb45224c966766_49a86972e8184647bedfeeb86c75a14c_medium.jpg",
     ],
     price: 500000,
-    star: 4.4,
+    star: 5,
     description: "Móc treo khăn bằng inox chắc chắn, không gỉ.",
     code: "PK003",
   },
@@ -453,7 +365,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/cw542hme5unw1_tcf802c2z_4x_ad1b8afad3f24d86993a3d1d21a9c36a_medium.png",
     ],
     price: 7000000,
-    star: 4.6,
+    star: 4,
     description: "Bồn cầu âm tường thiết kế tối giản, tiết kiệm không gian.",
     code: "BC004",
   },
@@ -466,7 +378,7 @@ const products: Product[] = [
       "https://product.hstatic.net/1000238289/product/cw542hme5unw1_tcf802c2z_4x_ad1b8afad3f24d86993a3d1d21a9c36a_medium.png",
     ],
     price: 2500000,
-    star: 4.5,
+    star: 5,
     description: "Bồn cầu nhỏ gọn, phù hợp với trẻ em.",
     code: "BC005",
   },
@@ -485,10 +397,4 @@ export interface Product {
   colors?: string[];
 }
 
-export {
-  featuredCollections,
-  features,
-  bestsellingProducts,
-  categories,
-  products,
-};
+export { categories, products };

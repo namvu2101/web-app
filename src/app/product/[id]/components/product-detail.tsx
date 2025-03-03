@@ -206,7 +206,7 @@ export function ProductDetail() {
               <Star
                 key={star}
                 className={`h-4 w-4 ${
-                  star <= 4
+                  star <= productData.star
                     ? "fill-amber-400 text-amber-400"
                     : "text-muted-foreground"
                 }`}

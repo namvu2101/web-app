@@ -1,8 +1,8 @@
-import type React from "react";
+import { QueryProvider } from "@/lib";
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import type React from "react";
 import "./globals.css";
-import { QueryProvider } from "@/lib";
 
 const inter = Inter({
   subsets: ["latin"],
