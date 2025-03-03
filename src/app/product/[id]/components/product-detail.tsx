@@ -6,7 +6,6 @@ import { addProductIntoCart } from "@/context/cart";
 import { Convert } from "@/lib/utils";
 import { Separator } from "@radix-ui/react-separator";
 import { Minus, Plus, ShoppingCart, Star } from "lucide-react";
-import { Key } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 import { TFormProduct } from "../page";
 

@@ -66,24 +66,6 @@ export function CheckoutOrder() {
             <div className="mt-6 p-3 bg-green-50 border border-green-100 rounded-lg text-green-700 text-sm">
               <p>Đơn hàng của bạn đủ điều kiện miễn phí vận chuyển</p>
             </div>
-
-            <div className="mt-6">
-              <h3 className="font-medium mb-2">Chúng tôi chấp nhận</h3>
-              <div className="flex gap-2">
-                <div className="w-12 h-8 bg-gray-100 rounded flex items-center justify-center text-xs">
-                  Visa
-                </div>
-                <div className="w-12 h-8 bg-gray-100 rounded flex items-center justify-center text-xs">
-                  MC
-                </div>
-                <div className="w-12 h-8 bg-gray-100 rounded flex items-center justify-center text-xs">
-                  JCB
-                </div>
-                <div className="w-12 h-8 bg-gray-100 rounded flex items-center justify-center text-xs">
-                  Momo
-                </div>
-              </div>
-            </div>
           </CardContent>
         </Card>
       </div>

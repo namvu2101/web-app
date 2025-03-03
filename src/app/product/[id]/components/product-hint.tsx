@@ -8,14 +8,16 @@ import { motion } from "framer-motion";
 import { Convert } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Eye } from 'lucide-react';
+import { ArrowRight, Eye } from "lucide-react";
 
 export function ProductHint() {
   const { control } = useFormContext<TFormProduct>();
   const { data } = useGetProducts();
   const router = useRouter();
   const product = useWatch({ control, name: "product", exact: true });
-  const hints = data.filter((i) => i.category_id === product.category_id && i.id !== product.id);
+  const hints = data.filter(
+    (i) => i.category_id === product.category_id && i.id !== product.id
+  );
 
   return (
     // <div className="mt-8 max-w-6xl mx-auto">
@@ -46,8 +48,8 @@ export function ProductHint() {
     //               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
     //             />
     //             <div className="absolute inset-0 bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-    //               <Button 
-    //                 size="sm" 
+    //               <Button
+    //                 size="sm"
     //                 variant="secondary"
     //                 className="gap-2"
     //                 onClick={() => router.push(`/product/${product.id}`)}
@@ -67,7 +69,7 @@ export function ProductHint() {
     //               <p className="text-sm font-bold text-primary">
     //                 {Convert.formatPrice(product.price)}
     //               </p>
-    //               <button 
+    //               <button
     //                 onClick={() => router.push(`/product/${product.id}`)}
     //                 className="text-gray-500 hover:text-primary transition-colors"
     //               >
@@ -117,8 +119,8 @@ export function ProductHint() {
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Button 
-                    size="sm" 
+                  <Button
+                    size="sm"
                     variant="secondary"
                     className="gap-2"
                     onClick={() => router.push(`/product/${product.id}`)}
@@ -137,7 +139,7 @@ export function ProductHint() {
                   <p className="text-sm font-bold text-primary">
                     {Convert.formatPrice(product.price)}
                   </p>
-                  <button 
+                  <button
                     onClick={() => router.push(`/product/${product.id}`)}
                     className="text-gray-500 hover:text-primary transition-colors"
                   >
@@ -157,7 +159,10 @@ export function ProductHint() {
           className="px-6 group"
         >
           Xem thêm sản phẩm
-          <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
+          <ArrowRight
+            size={16}
+            className="ml-2 transition-transform group-hover:translate-x-1"
+          />
         </Button>
       </div>
     </div>

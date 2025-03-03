@@ -22,13 +22,6 @@ export function CheckoutOrderItem({ item }: Readonly<TCart>) {
     setValue(`quantity.${item.id}`, quantity - 1);
   };
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("vi-VN", {
-      style: "currency",
-      currency: "VND",
-    }).format(price);
-  };
-
   return (
     <div className="flex flex-col sm:flex-row gap-4">
       <div className="flex gap-4">

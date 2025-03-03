@@ -41,7 +41,6 @@ export function Header() {
         <div className="flex items-center space-x-4">
           <Button
             variant="ghost"
-            size="icon"
             onClick={() => push("/cart")}
             className="relative"
           >
@@ -51,6 +50,7 @@ export function Header() {
                 {cart.length}
               </span>
             )}
+            <span className=" hidden sm:inline">Giỏ hàng</span>
           </Button>
           <Sheet>
             <SheetTrigger asChild>

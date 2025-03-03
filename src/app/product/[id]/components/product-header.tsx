@@ -31,16 +31,16 @@ export function ProductHeader() {
         <div className="flex items-center space-x-4">
           <Button
             variant="ghost"
-            size="icon"
             onClick={() => push("/cart")}
             className="relative"
           >
             <ShoppingCart className="h-5 w-5" />
-            {cart.length > 0 && (
+            {cart?.length > 0 && (
               <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 bg-red-500 text-white text-xs rounded-full">
                 {cart.length}
               </span>
             )}
+            <span className=" hidden sm:inline">Giỏ hàng</span>
           </Button>
           <Sheet>
             <SheetTrigger asChild>

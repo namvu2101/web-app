@@ -2,7 +2,6 @@
 
 import { CheckoutInfo } from "./checkout-info";
 import { CheckoutOrder } from "./checkout-order";
-import { Button } from "@/components/ui/button";
 
 export function CheckoutMain() {
   return (
