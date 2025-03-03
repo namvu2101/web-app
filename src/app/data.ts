@@ -103,7 +103,7 @@ const products: Product[] = [
   },
   {
     id: "2",
-    name: "Bồn cầu 2 khối tiện dụng ajshdlkasndoiasj liasjdlkasndoias ahdskjansd kaj ahkdkajdhkajhakjdhasiukdhkj",
+    name: "Bồn cầu 2 khối tiện dụng",
     category_id: "1",
     subcategory_id: "1-2",
     images: [
