@@ -1,16 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
-
-import { useGetCart } from "@/context/cart";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 import { Footer } from "../main/components/home-footer";
 import { ProductHeader } from "../product/[id]/components/product-header";
 import { CheckoutMain } from "./components/checkout-main";
-import { EPaymentType, EShipType } from "./types";
 import { CheckoutQR } from "./components/checkout-qrCode";
+import { EPaymentType, EShipType } from "./types";
 
 const checkoutSchema = z.object({
   name: z.string().min(5, "Tên không được để trống"),
@@ -24,12 +21,12 @@ const checkoutSchema = z.object({
   shipType: z.enum([EShipType.standard, EShipType.express]),
   products: z.array(z.any()),
   quantity: z.record(z.string(), z.number().min(1)),
+  qrCode: z.string(),
 });
 
 export type TCheckoutForm = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
-  const cart = useGetCart();
   const methods = useForm<TCheckoutForm>({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {
@@ -39,26 +36,20 @@ export default function CheckoutPage() {
       cityId: "",
       districtId: "",
       total: 0,
-      products: cart ?? [],
+      products: [],
       quantity: {},
       shipType: EShipType.standard,
       type: EPaymentType.banking,
     },
   });
 
-  useEffect(() => {
-    cart.forEach((p) => {
-      methods.setValue(`quantity.${p.id}`, p.quantity);
-    });
-  }, [cart]);
-
   return (
     <div className="bg-white min-h-screen">
       <FormProvider {...methods}>
         <ProductHeader />
         <CheckoutMain />
+        <CheckoutQR />
       </FormProvider>
-      <CheckoutQR />
       <Footer />
     </div>
   );

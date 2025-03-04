@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Product } from "@/app/data";
 
-export type TAddCart = Product & { quantity: number };
+export type TAddCart = Product & { quantity: number; color?: string };
 export type TCart = Record<string, TAddCart>;
 
 const CART_STORAGE_KEY = "cart";
@@ -29,12 +29,20 @@ const saveCartToLocalStorage = (updatedCart: TCart) => {
   listeners.forEach((listener) => listener({ ...cart }));
 };
 
-export const addProductIntoCart = (product: Product, quantity?: number) => {
+export const addProductIntoCart = (
+  product: Product,
+  quantity?: number,
+  color?: string
+) => {
   const updatedCart = { ...cart };
   if (updatedCart[product.id]) {
     updatedCart[product.id].quantity += quantity ?? 1;
   } else {
-    updatedCart[product.id] = { ...product, quantity: quantity ?? 1 };
+    updatedCart[product.id] = {
+      ...product,
+      quantity: quantity ?? 1,
+      color: color ?? "white",
+    };
   }
   saveCartToLocalStorage(updatedCart);
 };

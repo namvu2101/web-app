@@ -21,7 +21,7 @@ export function Footer() {
                 (item) => (
                   <li key={item}>
                     <Link
-                      href="#"
+                      href="/"
                       className="text-gray-600 hover:text-gray-900"
                     >
                       {item}
@@ -52,15 +52,15 @@ export function Footer() {
             <h3 className="font-bold mb-4">Liên hệ</h3>
             <ul className="space-y-2 text-sm">
               <li className="text-gray-600">Email: info@luxbath.com</li>
-              <li className="text-gray-600">Điện thoại: 1900 1234</li>
+              <li className="text-gray-600">Điện thoại: 0974046550</li>
               <li className="text-gray-600">
-                Địa chỉ: 123 Đường ABC, Quận 1, TP.HCM
+                Địa chỉ: 123 Đường ABC, Phường xyz, TP
               </li>
             </ul>
           </div>
         </div>
         <div className="border-t mt-10 pt-6 text-center text-sm text-gray-500">
-          <p>© 2023 LUXBATH. Tất cả quyền được bảo lưu.</p>
+          <p>© 2025 LUXBATH. Tất cả quyền được bảo lưu.</p>
         </div>
       </div>
     </footer>

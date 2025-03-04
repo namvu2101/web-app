@@ -12,10 +12,13 @@ import { setShowDialog } from "../modules/dialog-status";
 import { useGetLocation } from "../modules/useGetLocation";
 import { TCheckoutForm } from "../page";
 import { EPaymentType, EShipType } from "../types";
+import { useMutationQR } from "../modules/useMutationQR";
 
 export function CheckoutInfo() {
   const { data } = useGetLocation();
-  const { control, setValue, handleSubmit } = useFormContext<TCheckoutForm>();
+  const mutation = useMutationQR();
+  const { control, setValue, handleSubmit, getValues } =
+    useFormContext<TCheckoutForm>();
   const shipType = useWatch({ control, name: "shipType", exact: true });
   const city = useWatch({ control, name: "cityId", exact: true });
   const type = useWatch({ control, name: "type", exact: true });
@@ -35,6 +38,17 @@ export function CheckoutInfo() {
 
   const onCreate = async (value: TCheckoutForm) => {
     console.log(value);
+    const body = {
+      accountNo: "0691000440486",
+      accountName: "VU PHUONG NAM",
+      acqId: 970436,
+      amount: getValues("total"),
+      addInfo: "TEST",
+      format: "text",
+      template: "compact",
+    };
+    const res = await mutation.mutateAsync(body);
+    setValue("qrCode", res.data.data.qrDataURL);
     if (type == "banking") {
       return setShowDialog("banking");
     }

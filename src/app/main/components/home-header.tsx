@@ -10,12 +10,9 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { Menu, ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export function Header() {
   const cart = useGetCart();
-
-  const { push } = useRouter();
 
   const titles: { title: string; href: string }[] = [
     { title: "Giới thiệu", href: "#" },
@@ -44,19 +41,18 @@ export function Header() {
         </nav>
 
         <div className="flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            onClick={() => push("/cart")}
-            className="relative"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            {cart?.length > 0 && (
-              <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 bg-red-500 text-white text-xs rounded-full">
-                {cart.length}
-              </span>
-            )}
-            <span className=" hidden sm:inline">Giỏ hàng</span>
-          </Button>
+          <Link href={"/cart"}>
+            <Button variant="ghost" className="relative">
+              <ShoppingCart className="h-5 w-5" />
+              {cart?.length > 0 && (
+                <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 bg-red-500 text-white text-xs rounded-full">
+                  {cart.length}
+                </span>
+              )}
+              <span className=" hidden sm:inline">Giỏ hàng</span>
+            </Button>
+          </Link>
+
           <div className="md:hidden">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

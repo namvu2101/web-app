@@ -24,7 +24,7 @@ export function Cart() {
 
   if (cart.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-16 text-center">
+      <div className="container h-full mx-auto px-4 py-16 text-center items-center">
         <h1 className="text-3xl font-serif mb-4">
           Giỏ hàng của bạn đang trống
         </h1>
