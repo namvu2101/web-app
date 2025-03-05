@@ -1,4 +1,3 @@
-import qr from "@/assets/qr.jpg";
 import {
   Dialog,
   DialogContent,
@@ -18,7 +17,7 @@ export function CheckoutQR() {
         <DialogHeader>
           <DialogTitle>Quét mã bên dưới để thanh toán</DialogTitle>
         </DialogHeader>
-        <Image src={qrImage || qr} alt="qrImage" width={500} height={500} />
+        <Image src={qrImage} alt="qrImage" width={500} height={500} />
       </DialogContent>
     </Dialog>
   );

@@ -8,6 +8,7 @@ import { ProductHeader } from "../product/[id]/components/product-header";
 import { CheckoutMain } from "./components/checkout-main";
 import { CheckoutQR } from "./components/checkout-qrCode";
 import { EPaymentType, EShipType } from "./types";
+import qr from "@/assets/qr.jpg";
 
 const checkoutSchema = z.object({
   name: z.string().min(5, "Tên không được để trống"),
@@ -21,7 +22,7 @@ const checkoutSchema = z.object({
   shipType: z.enum([EShipType.standard, EShipType.express]),
   products: z.array(z.any()),
   quantity: z.record(z.string(), z.number().min(1)),
-  qrCode: z.string(),
+  qrCode: z.any(),
 });
 
 export type TCheckoutForm = z.infer<typeof checkoutSchema>;
@@ -40,6 +41,7 @@ export default function CheckoutPage() {
       quantity: {},
       shipType: EShipType.standard,
       type: EPaymentType.banking,
+      qrCode: qr,
     },
   });
 
