@@ -9,10 +9,8 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export function CartHeader() {
-  const { push } = useRouter();
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-50">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
@@ -21,14 +19,14 @@ export function CartHeader() {
         </Link>
         <nav className="hidden md:flex">
           {categories.map((item) => (
-            <Button
-              key={item.id}
-              variant="ghost"
-              className="justify-start hover:bg-green-100"
-              onClick={() => push(`/products?category=${item.id}`)}
-            >
-              {item.name}
-            </Button>
+            <Link key={item.id} href={`/products?category=${item.id}`}>
+              <Button
+                variant="ghost"
+                className="justify-start hover:bg-green-100"
+              >
+                {item.name}
+              </Button>
+            </Link>
           ))}
         </nav>
         <div className="md:hidden">
@@ -55,6 +53,7 @@ export function CartHeader() {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
+        <div />
       </div>
     </header>
   );

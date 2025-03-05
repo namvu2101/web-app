@@ -5,14 +5,23 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { addProductIntoCart } from "@/context/cart";
 import { Convert } from "@/lib/utils";
 import { Separator } from "@radix-ui/react-separator";
-import { Minus, Plus, ShoppingCart, Star } from "lucide-react";
+import {
+  Check,
+  Minus,
+  Plus,
+  ShoppingBag,
+  ShoppingCart,
+  Star,
+} from "lucide-react";
 import { useFormContext, useWatch } from "react-hook-form";
 import { TFormProduct } from "../page";
+import Link from "next/link";
 
 export function ProductDetail() {
   const { setValue, control, getValues } = useFormContext<TFormProduct>();
   const productData = getValues("product");
   const quantity = useWatch({ control, name: "quantity", exact: true });
+  const color = useWatch({ control, name: "color", exact: true });
   const decreaseQuantity = () => {
     if (quantity > 1) {
       setValue("quantity", getValues("quantity") - 1);
@@ -58,14 +67,19 @@ export function ProductDetail() {
             <span className="font-medium">Màu sắc:</span>
             <div className="flex gap-2">
               {(productData?.colors || ["white", "black"]).map(
-                (color: string, index: number) => (
-                  <div
-                    key={color + `${index}`}
-                    className={`w-8 h-8 rounded-full cursor-pointer border ${
-                      index === 0 ? "border-2 border-primary" : "border-border"
-                    }`}
-                    style={{ backgroundColor: color }}
-                  />
+                (item: string, index: number) => (
+                  <Button
+                    key={item + `${index}`}
+                    variant="ghost"
+                    style={{ backgroundColor: item, position: "relative" }}
+                    onClick={() => setValue("color", item)}
+                    className={`rounded-full cursor-pointer border border-border w-8 h-8 flex items-center justify-center 
+        ${color === item ? "border-2 border-yellow-500" : ""}`}
+                  >
+                    {color === item && (
+                      <Check className="w-4 h-4 text-yellow-500" />
+                    )}
+                  </Button>
                 )
               )}
             </div>
@@ -96,18 +110,31 @@ export function ProductDetail() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="grid grid-cols-2 gap-3 mt-4">
+          <Link href={`/checkout?id=${productData.id}&quantity=${quantity}`}>
+            <Button size="lg" className="w-full">
+              <ShoppingBag className="mr-2 h-4 w-4" />
+              Mua ngay
+            </Button>
+          </Link>
+
           <Button
-            className="w-full py-6"
+            className="w-full"
             size="lg"
-            onClick={() => addProductIntoCart(productData, quantity)}
+            onClick={() =>
+              productData &&
+              quantity > 0 &&
+              addProductIntoCart(productData, quantity, color)
+            }
+            disabled={!productData || quantity <= 0}
           >
             <ShoppingCart className="mr-2 h-4 w-4" />
-            Thêm vào giỏ hàng
+            <span className="hidden sm:inline"> Thêm vào giỏ hàng</span>
+            <span className="md:hidden"> Thêm </span>
           </Button>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-4 text-sm">
+      <div className="flex gap-4 text-sm justify-between">
         <div className="flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"

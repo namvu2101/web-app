@@ -18,15 +18,6 @@ export function ProductView() {
   });
 
   return (
-    // <div className="container">
-    //   <FormProvider {...methods}>
-    //     <ProductHeader />
-    //     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 m-16">
-    //       <ProductImage />
-    //       <ProductDetail />
-    //     </div>
-    //   </FormProvider>
-    // </div>
     <div className="container mx-auto px-4">
       <FormProvider {...methods}>
         <ProductHeader />

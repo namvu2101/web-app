@@ -11,7 +11,7 @@ import { TCheckoutForm } from "../page";
 import { CheckoutOrderItem } from "./checkout-order-item";
 
 export function CheckoutOrder() {
-  const { control, getValues } = useFormContext<TCheckoutForm>();
+  const { control, getValues, setValue } = useFormContext<TCheckoutForm>();
   const quantity = useWatch({ control, name: "quantity" });
   const shipping = 0;
   const products = getValues("products");
@@ -20,6 +20,7 @@ export function CheckoutOrder() {
     0
   );
   const total = useMemo(() => {
+    setValue("total", subtotal + shipping);
     return subtotal + shipping;
   }, [products, quantity, subtotal]);
 
